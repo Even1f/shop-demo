@@ -1,13 +1,11 @@
 <template>
   <div class="container">
-    <p>{{ $store.state.moduleA.userName }}</p>
-    <p>{{ $store.state.moduleB.userName }}</p>
+    {{ $store.state.user.profile.account }}
+    <button @click="$store.commit('user/setUser', { account: 'zhousg' })">设置用户信息</button>
   </div>
 </template>
 
 <script>
-import { useStore } from 'vuex'
-
 export default {}
 </script>
 
