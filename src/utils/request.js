@@ -13,6 +13,7 @@ instance.interceptors.request.use(config => {
 
   const profile = store.state.user.profile
   // 设置token
+  console.log(profile.token);
   if (profile.token) {
     config.headers.Authorization = `Bearer ${profile.token}`
   }
@@ -25,7 +26,7 @@ instance.interceptors.request.use(config => {
 instance.interceptors.response.use(res => res.data, err => {
   // 没有token时需要跳转到登录页面
   if (err.response && err.response.status === 401) {
-    store.commit('user/serUser', {})
+    store.commit('user/setUser', {})
     // 当前页面路由信息 旨在登陆后返回原来的页面
     const fullPath = encodeURIComponent(router.currentRoute.value.fullPath)
     router.push('/login?redirectUrl=' + fullPath)
@@ -41,5 +42,6 @@ export default (url, method, submitData) => {
     // 如果不是get 需要data
 
     [method.toLowerCase() === 'get' ? 'params' : 'data']: submitData
+    // params: submitData
   })
 }
