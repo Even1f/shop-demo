@@ -1,9 +1,10 @@
 <template>
   <!-- 顶部通栏 -->
   <Appnavbar />
-
   <!-- 头部组件 -->
   <Appheader />
+  <!-- 吸顶头部 -->
+  <AppHeaderSticky />
   <!-- 内容容器 -->
   <div class="app-body">
     <!-- 二级路由 -->
@@ -17,19 +18,23 @@
 import Appnavbar from '@/components/app-navbar.vue'
 import Appheader from '@/components/app-header.vue'
 import Appfooter from '@/components/app-footer.vue'
+import AppHeaderSticky from '@/components/app-header-sticky.vue'
+import { useStore } from 'vuex'
 export default {
   name: 'Layout',
   components: {
     Appnavbar,
     Appheader,
-    Appfooter
+    Appfooter,
+    AppHeaderSticky
+  },
+  setup() {
+    const store = useStore()
+    store.dispatch('category/getList')
   }
 }
 </script>
 
 <style lang="less">
-.app-body {
-  height: 600px;
-}
 </style>
 

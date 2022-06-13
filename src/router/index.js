@@ -2,15 +2,19 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const Layout = () => import('@/views/Layout')
 const Home = () => import('@/views/home/index')
+const TopCategory = () => import('@/views/category/index')
+const SubCategory = () => import('@/views/category/sub')
 
 const routes = [
   // 一级路由布局容器
   {
-    paht: '/',
+    path: '/',
     component: Layout,
-    redirect: '/home',
+    // redirect: '/',
     children: [
-      { path: '/home', component: Home }
+      { path: '/', component: Home },
+      { path: '/category/:id', component: TopCategory },
+      { path: '/category/sub/:id', component: SubCategory },
     ]
   }
 ]
