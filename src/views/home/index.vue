@@ -12,12 +12,12 @@
   <HomeNew />
   <!-- 人气推荐 -->
   <HomeHot />
-  <!-- vue动画 -->
-  <button @click="show = true">显示</button>
-  <button @click="show = false">隐藏</button>
-  <Transition>
-    <div v-show="show" class="box"></div>
-  </Transition>
+  <!-- 品牌组件 -->
+  <HomeBrand />
+  <!-- 产品区块  -->
+  <HomeProduct />
+  <!-- 最新专题 -->
+  <HomeSpecial />
 </template>
 
 <script>
@@ -26,13 +26,19 @@ import HomeCategory from './components/home-category.vue'
 import HomeBanner from './components/home-banner.vue'
 import HomeNew from './components/home-new.vue'
 import HomeHot from './components/home-hot.vue'
+import HomeBrand from './components/home-brand.vue'
+import HomeProduct from './components/home-product.vue'
+import HomeSpecial from './components/home-special.vue'
 export default {
   name: 'HomePage',
   components: {
     HomeCategory,
     HomeBanner,
     HomeNew,
-    HomeHot
+    HomeHot,
+    HomeBrand,
+    HomeProduct,
+    HomeSpecial
   },
   setup() {
     const show = ref(true)
@@ -53,25 +59,5 @@ export default {
 //  v-enter-from v-enter-active v-enter-to
 // 离开：离开前       离开中       离开后
 //  v-leave-from v-leave-active v-leave-to
-
-.v-enter-from {
-  opacity: 0;
-}
-.v-enter-active {
-  transition: all 2s;
-}
-.v-enter-to {
-  opacity: 1;
-}
-
-.v-leave-from {
-  opacity: 1;
-}
-.v-leave-active {
-  transition: all 2s;
-}
-.v-leave-to {
-  opacity: 0;
-}
 </style>
 
